@@ -1,9 +1,10 @@
 import './App.css';
+import Index from "./components/LandingPage/LandingPage"
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Countries</h1>
+      <Index/>
     </div>
   );
 }
