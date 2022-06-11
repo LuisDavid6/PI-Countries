@@ -1,4 +1,5 @@
-import style from "./LandingPage.module.css"
+import { Link } from "react-router-dom"
+import style from "./Styles/LandingPage.module.css"
 
 export default function Index(){
     return(
@@ -7,7 +8,7 @@ export default function Index(){
                 <h1>HENRY COUNTRIES</h1>
             </div>
             <div className={style.button}>
-                <button className={style.enter}>INGRESAR</button>
+                <Link to="/home"><button className={style.enter}>INGRESAR</button></Link>
             </div>
         </div>
     )

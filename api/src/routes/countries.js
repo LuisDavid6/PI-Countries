@@ -44,7 +44,7 @@ router.get("/", async (req, res) =>{
         const {data} = await axios.get(`${url}/all`)
         const countries = []
         
-        data.map(async e=> {
+        data.map(async e=> {         
             if(e.ccn3 && e.name.common && e.flags.png && e.continents[0] && e.capital && e.subregion && e.area && e.population){
                 const country ={
                     id: e.ccn3,
@@ -57,7 +57,8 @@ router.get("/", async (req, res) =>{
                     population: e.population
                 }
                 countries.push(country)
-            }
+
+            } 
         })
         await Country.bulkCreate(countries)
         res.status(201).json(countries)
@@ -69,12 +70,16 @@ router.get("/", async (req, res) =>{
 
 router.get("/:id", async (req, res) =>{
     let {id} = req.params
-    // let country = await Country.findByPk(id)
-    let country = await Country.findOne({
-        where: {id},
-        include: Activity
-    })
-    res.json(country)
+    try{
+        // let country = await Country.findByPk(id)
+        let country = await Country.findOne({
+            where: {id},
+            include: Activity
+        })
+        res.json(country)
+    }catch (error) {
+        res.status(404).json("No se obtuvieron datos")
+    }
 })
 
 
