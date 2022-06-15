@@ -1,3 +1,4 @@
+import style from "./Styles/Filters.module.css"
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector} from "react-redux"
 import { orderByWord, filterByContinent, orderByPopulation } from "../redux/actions"
@@ -31,14 +32,19 @@ export default function Filters(){
     }
 
     return(
-        <div>
-                <select name="order" value={filter.orderByWord} onChange={e => handleOnChange(e)}>
-                    <option value="" disabled selected>Ordenar</option>
-                    <option value="asc" >A-Z</option>
+        <div className={style.container}>
+            <fieldset className={style.fieldset}>
+                <legend className={style.legend}>ORDER BY:</legend>
+                <select name="order" className={style.select} value={filter.orderByWord} onChange={e => handleOnChange(e)}>
+                    <option value="none" selected>None</option>
+                    <option value="asc" >Asc A-Z</option>
                     <option value="desc">Z-A</option>
+                    {/* <option value="none">None</option> */}
                 </select>
-                <select name="continents" value={filter.filterByContinent} onChange={(e) => handleOnChangeContinent(e)}>
-                    <option value="" disabled selected>Continent</option>
+            </fieldset>
+            <fieldset className={style.fieldset}>
+                <legend className={style.legend}>CONTINENT</legend>
+                <select name="continents" className={style.select} value={filter.filterByContinent} onChange={(e) => handleOnChangeContinent(e)}>
                     <option value="All">View All</option>
                     <option value="Africa">Africa</option>
                     <option value="Asia">Asia</option>
@@ -47,12 +53,21 @@ export default function Filters(){
                     <option value="North America">North America</option>
                     <option value="South America">South America</option>
                 </select>
-                <select name="population" value={filter.orderByPopulation} onChange={(e) => handleOnChangePopulation(e)}>
-                    <option value="" disabled selected>population</option>
+            </fieldset>
+            <fieldset className={style.fieldset}>
+            <legend className={style.legend}>POPULATION</legend>
+            <select name="population" className={style.select} value={filter.orderByPopulation} onChange={(e) => handleOnChangePopulation(e)}>
+                    {/* <option value="" disabled selected>Population</option> */}
                     <option value="asc">Min-Max</option>
                     <option value="desc">Max-Min</option>
                 </select>
-                <button>Actividades</button>
+            </fieldset>  
+            <fieldset className={style.fieldset}>
+            <legend className={style.legend}>ACTIVITIES</legend>
+            <select name="activities" className={style.select}>
+                    <option value="asc">View All</option>
+                </select>
+            </fieldset> 
         </div>
     )
 }

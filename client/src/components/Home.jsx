@@ -2,24 +2,25 @@ import NavBar from "./NavBar"
 import style from "./Styles/Home.module.css"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector} from "react-redux"
-import { getAllCountries } from "../redux/actions"
+import { addActivity, getAllCountries, pagination } from "../redux/actions"
 import CountryCard from "./CountryCard"
 import Filters from "./Filters"
+import Pagination from "./Pagination"
 
 export default function Home(){
 
     const dispatch = useDispatch()
 
-    // const countries = useSelector((state)=> state.countries)
     const countriesFilter = useSelector((state)=> state.countriesFilter)
     const filter = useSelector((state)=> state.filter)
-
+    
     useEffect(()=>{
         dispatch(getAllCountries())
+        // dispatch(pagination(1))
     },[])
-
+    
     useEffect(()=>{
-
+        
     },[filter])
 
     return(
@@ -30,11 +31,15 @@ export default function Home(){
             <div>
                 <Filters></Filters>
             </div>
+            <div>
+                <Pagination></Pagination>
+            </div>
             <div className={style.contents}>
                 {/* {console.log(countriesFilter)} */}
-                { countriesFilter && countriesFilter.map(e =>{
+                {typeof countriesFilter === "string" ? <h5>Country not found</h5> : 
+                 countriesFilter && countriesFilter.map(e =>{
                     return (
-                        <CountryCard key={e.id} data={e}></CountryCard>
+                        <CountryCard className={style.card} key={e.id} data={e}></CountryCard>
                         )
                     })}
             </div>

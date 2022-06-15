@@ -12,6 +12,10 @@ img{
     margin-left: 20px;
 }
 
+.card :hover{
+    transform: translateY(-10px);
+}
+
 .name{
     text-align: center;
     background-color: aquamarine;

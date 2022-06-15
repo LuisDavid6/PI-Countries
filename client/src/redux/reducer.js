@@ -2,13 +2,21 @@ import {GET_ALL_COUNTRIES,
         GET_COUNTRY, 
         ORDER_BY_WORD, 
         FILTER_BY_CONTINENT, 
-        ORDER_BY_POPULATION} from "./actionsType"
+        ORDER_BY_POPULATION,
+        CREATE_ACTIVITY,
+        ADD_ACTIVITY,
+        ADD_ID_COUNTRIES,
+        GET_COUNTRIES_BY_NAME,
+        PAGINATION } from "./actionsType"
 
 const inicialState = {
     countries:[],
     countriesFilter:[],
     country:{},
-    filter: false
+    countriesByName:[],
+    filter: false,
+    activity:{},
+    idCountries:[],
 }
 
 export default function Reducer(state=inicialState, action){
@@ -23,6 +31,11 @@ export default function Reducer(state=inicialState, action){
             return{
                 ...state,
                 country: action.payload
+            }
+        case GET_COUNTRIES_BY_NAME:
+            return{
+                ...state,
+                countriesFilter: action.payload.length>0 ? action.payload : "sin info"
             }
         case ORDER_BY_WORD:
             let filt = []
@@ -39,7 +52,7 @@ export default function Reducer(state=inicialState, action){
                 })
             }
             else filt = state.countries
-            
+
             return{
                 ...state,
                 countriesFilter: filt,
@@ -47,6 +60,7 @@ export default function Reducer(state=inicialState, action){
                }
         case FILTER_BY_CONTINENT:
             if(action.payload === "All") return state
+            
             return{
                 ...state,
                 countriesFilter: state.countries.filter(e => e.continent === action.payload),
@@ -71,6 +85,36 @@ export default function Reducer(state=inicialState, action){
                 countriesFilter: order,
                 filter: !state.filter
             }
+        case CREATE_ACTIVITY:
+            return{
+                ...state,
+                activity: action.payload
+            }
+        case ADD_ACTIVITY:
+            return{
+                state
+            }
+        case ADD_ID_COUNTRIES:
+            return{
+                ...state,
+                idCountries: action.payload
+            }
+        case PAGINATION: {
+            let num = parseInt(action.payload)
+            console.log(num)
+            let countriesviews = []
+            if(num === 1){
+                countriesviews = state.countries.slice(num-1, num+8)
+            }
+            else {
+                countriesviews = state.countries.slice((num-1)*(10), (((num-1)*(10))+(10)))
+            }
+            console.log(countriesviews)
+            return{
+                ...state,
+                countriesFilter: countriesviews,
+            }
+        }
         default:
             return state
     }
