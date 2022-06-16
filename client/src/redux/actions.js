@@ -1,5 +1,5 @@
 import {GET_ALL_COUNTRIES, GET_COUNTRY,
-         ORDER_BY_WORD, FILTER_BY_CONTINENT, ORDER_BY_POPULATION, 
+         ORDER_BY_WORD, FILTER_BY_CONTINENT,
          CREATE_ACTIVITY, ADD_ACTIVITY, ADD_ID_COUNTRIES, 
          GET_COUNTRIES_BY_NAME, PAGINATION}from "./actionsType"
 
@@ -49,13 +49,6 @@ export function filterByContinent(continent){
     return{
         type: FILTER_BY_CONTINENT,
         payload: continent
-    }
-}
-
-export function orderByPopulation(order){
-    return{
-        type: ORDER_BY_POPULATION,
-        payload: order
     }
 }
 

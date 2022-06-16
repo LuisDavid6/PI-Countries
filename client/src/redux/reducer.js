@@ -1,8 +1,7 @@
 import {GET_ALL_COUNTRIES,
     GET_COUNTRY, 
     ORDER_BY_WORD, 
-    FILTER_BY_CONTINENT, 
-    ORDER_BY_POPULATION,
+    FILTER_BY_CONTINENT,
     CREATE_ACTIVITY,
     ADD_ACTIVITY,
     ADD_ID_COUNTRIES,
@@ -36,7 +35,9 @@ switch(action.type){
     case GET_COUNTRIES_BY_NAME:
         return{
             ...state,
-            countriesFilter: action.payload.length>0 ? action.payload : "sin info"
+            countriesFilter: action.payload.length>0 ? action.payload : "sin info",
+            countries2: action.payload
+
         }
     case ORDER_BY_WORD:
         let order = []
