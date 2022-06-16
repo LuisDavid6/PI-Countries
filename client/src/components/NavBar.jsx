@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux"
-import { getCountriesByName} from "../redux/actions"
+import { getCountriesByName,filterByContinent} from "../redux/actions"
 
 export default function NavBar(){
 
     const [search, setSearch] = useState("")
     const dispatch = useDispatch()
+    
 
     const handleOnChange = (e) =>{
         setSearch(e.target.value)
+        dispatch(getCountriesByName(search))
     }
+    
+    useEffect(()=>{
+        dispatch(getCountriesByName(search))
+    },[search])
 
     const handleOnSubmit = (e) =>{
         e.preventDefault()
+        if(search === "") alert("debes ingresar un nombre")
         dispatch(getCountriesByName(search))
     }
     return(

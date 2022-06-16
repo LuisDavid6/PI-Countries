@@ -37,7 +37,6 @@ switch(action.type){
             ...state,
             countriesFilter: action.payload.length>0 ? action.payload : "sin info",
             countries2: action.payload
-
         }
     case ORDER_BY_WORD:
         let order = []
