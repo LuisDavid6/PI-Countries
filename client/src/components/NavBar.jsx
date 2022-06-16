@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux"
-import {getCountriesByName} from "../redux/actions"
+import { getCountriesByName} from "../redux/actions"
 
 export default function NavBar(){
 

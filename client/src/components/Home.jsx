@@ -10,17 +10,16 @@ import Pagination from "./Pagination"
 export default function Home(){
 
     const dispatch = useDispatch()
-
     const countriesFilter = useSelector((state)=> state.countriesFilter)
     const filter = useSelector((state)=> state.filter)
     
     useEffect(()=>{
         dispatch(getAllCountries())
-        // dispatch(pagination(1))
+        // console.log("home")
     },[])
-    
+
     useEffect(()=>{
-        
+
     },[filter])
 
     return(
@@ -35,9 +34,9 @@ export default function Home(){
                 <Pagination></Pagination>
             </div>
             <div className={style.contents}>
-                {/* {console.log(countriesFilter)} */}
+                {/* {console.log(a)} */}
                 {typeof countriesFilter === "string" ? <h5>Country not found</h5> : 
-                 countriesFilter && countriesFilter.map(e =>{
+                 countriesFilter && countriesFilter.slice(0, 9).map(e =>{
                     return (
                         <CountryCard className={style.card} key={e.id} data={e}></CountryCard>
                         )
