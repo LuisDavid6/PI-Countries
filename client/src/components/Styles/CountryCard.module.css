@@ -1,22 +1,43 @@
-img{
-    width: 150px;
-    height: 100px;
-    align-self: center;
+.container :hover{
+    transform: translateY(-10px);
 }
+
 
 .card{
     display: flex;
     flex-direction: column;
     justify-content: center;
     border: 3px solid black;
+    /* border: 3px solid rgba(175, 149, 111, 0.911);;; */
+    border-radius: 20px;
     margin-left: 20px;
+    background-color: rgba(175, 149, 111, 0.911);;
+    color: black;
+    font-weight: 600;  
+    width: 200px;
+    height: 260px;  
 }
 
-.card :hover{
-    transform: translateY(-10px);
+img{
+    width: 150px;
+    height: 100px;
+    align-self: center;
+    pointer-events: none;
+    margin-bottom: 10px;
+}
+
+.span{
+    text-align: center;
+    pointer-events: none;
+    margin-bottom: 10px;
 }
 
 .name{
-    text-align: center;
-    background-color: aquamarine;
+    font-size: large;
+    margin-top: -8px;
+    margin-bottom: 20px;
+}
+
+.link{
+    text-decoration: none;
 }

@@ -1,21 +1,27 @@
 import style from "./Styles/Filters.module.css"
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector} from "react-redux"
-import { orderByWord, filterByContinent } from "../redux/actions"
+import { orderByWord, filterByContinent, filterByActivity, getAllActivities, addActivity } from "../redux/actions"
 
 export default function Filters(){
 
     const dispatch = useDispatch()
+    const activities = useSelector((state)=> state.activities)
+    const activity = useSelector((state)=> state.activity)
+    const idCountries = useSelector((state)=> state.idCountries)
 
     const [filter, setFilter] = useState({
         orderBy: "",
         filterByContinent: "",
-        orderByPopulation: ""
+        orderByPopulation: "",
+        filterByActivity: "",
     })
 
     useEffect(()=>{
-        dispatch(orderByWord(filter.orderBy))
+        dispatch(getAllActivities())
+        filter.orderBy && dispatch(orderByWord(filter.orderBy))
         filter.filterByContinent && dispatch(filterByContinent(filter.filterByContinent))
+        filter.filterByActivity && dispatch(filterByActivity(filter.filterByActivity))
     },[filter])
 
     const handleOnChange = (e) => {
@@ -23,7 +29,11 @@ export default function Filters(){
     }
 
     const handleOnChangeContinent = (e) =>{
-        setFilter({...filter, filterByContinent:e.target.value})
+        setFilter({...filter, filterByContinent: e.target.value})
+    }
+
+    const handleOnChangeActivity = (e) =>{
+        setFilter({...filter, filterByActivity:e.target.value})
     }
 
     return(
@@ -31,12 +41,11 @@ export default function Filters(){
             <fieldset className={style.fieldset}>
                 <legend className={style.legend}>ORDER BY:</legend>
                 <select name="order" className={style.select} value={filter.orderBy} onChange={e => handleOnChange(e)}>
-                    <option value="none" selected>Default</option>
-                    <option value="asc" >Asc A-Z</option>
-                    <option value="desc">Z-A</option>
-                    <option value="min">Min-Max</option>
-                    <option value="max">Max-Min</option>
-                    {/* <option value="none">None</option> */}
+                    <option value="none" selected>Default</option>x
+                    <option value="asc" >Order A - Z</option>
+                    <option value="desc">Order Z - A</option>
+                    <option value="min">Population: Min-Max</option>
+                    <option value="max">Pop Max-Min</option>
                 </select>
             </fieldset>
             <fieldset className={style.fieldset}>
@@ -53,8 +62,11 @@ export default function Filters(){
             </fieldset>  
             <fieldset className={style.fieldset}>
             <legend className={style.legend}>ACTIVITIES</legend>
-            <select name="activities" className={style.select}>
-                    <option value="asc">View All</option>
+            <select name="activities" className={style.select} value={filter.filterByActivity} onChange={(e) => handleOnChangeActivity(e)}>
+                    <option value="All">View All</option>
+                    {activities && activities.map(e=>{
+                        return <option key={e.id} value={e.name}>{e.name}</option>
+                    })}
                 </select>
             </fieldset> 
         </div>

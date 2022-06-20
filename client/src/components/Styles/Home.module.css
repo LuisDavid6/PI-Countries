@@ -1,11 +1,12 @@
 .contents{
     display: grid;
     grid-template-columns: repeat(auto-fill , 200px);
-    gap: 20px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    gap: 60px;
+    margin: 40px 90px;
+    justify-content: center;
 }
-
-/* .contents :hover{
-    transform: translateY(-10px);
-} */
+.container{
+    
+}
+ 
+  

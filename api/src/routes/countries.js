@@ -27,6 +27,7 @@ router.get("/", async (req, res, next) =>{
 
     try {
         const list = await Country.findAll({
+            include: Activity
             // order:[["name", "DESC"]]
         })
 

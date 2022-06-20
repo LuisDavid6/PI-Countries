@@ -1,30 +1,15 @@
 import style from "./Styles/CreateActivity.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import { useState, useEffect } from "react"
-import {getAllCountries, createActivity, addIdCountries } from "../redux/actions"
+import {getAllCountries, createActivity, addIdCountries, addActivity } from "../redux/actions"
 import { validateName } from "../Validations/index"
 
 export default function CreateActivity(props){
 
-
-    const createTime = () =>{
-        let hours = []
-        let min = []
-        for (let i=0; i<=24; i++) {
-            hours.push(i)
-        }
-        for (let i=0; i<=60; i++) {
-            let minute = i
-            if (i<10) minute = "0"+i
-            min.push(minute)
-        }
-        return {hours,min}
-    }
-
     const [form, setForm] = useState({
         name:"",
         difficulty: "1",
-        duration:{hours:"",min:""},
+        duration: 0,
         season:"summer",
         country:[]
     })
@@ -37,16 +22,11 @@ export default function CreateActivity(props){
         countries: ""
     })
 
-    const {hours, min} = createTime()
-
     const [countryState, setCountryState] = useState([])
     const countries = useSelector(state => state.countriesFilter)
-    // const activity = useSelector(state => state.activity)
-    // const idCountries = useSelector(state => state.idCountries)
-    // // console.log(activity.id)
-    // // console.log(idCountries)
-    // activity && idCountries && dispatch(addActivity(activity.id, idCountries))
 
+    const activity = useSelector(state => state.activity)
+    const idCountries = useSelector(state => state.idCountries)
 
     const dispatch = useDispatch()
     
@@ -55,7 +35,7 @@ export default function CreateActivity(props){
             [e.target.name] : e.target.value})
         
         let name = validateName({[e.target.name] : e.target.value})
-        console.log(name)
+        // console.log(name)
         setErrors({...errors, [e.target.name]: name})
 
     }
@@ -67,27 +47,19 @@ export default function CreateActivity(props){
         setForm({...form, country:[...form.country, e.target.value]})
     }
 
-    const handleHours = (e) =>{
-        setForm({...form, duration:{...form.duration, hours:e.target.value}})
-    }
-
-    const handleMinutes = (e) =>{
-        setForm({...form, duration:{...form.duration, min:e.target.value}})
-    }
-
 
     const handleOnSubmit = (e) =>{
         e.preventDefault()
         const value = {
             name: form.name,
             difficulty: form.difficulty,
-            duration: `${form.duration.hours}:${form.duration.min}`,
+            duration: ""+form.duration,
             season: form.season 
         }
         //validar datos
         if(!errors.name && !errors.difficulty && !errors.duration && 
         !errors.season && !errors.countries){
-            dispatch(createActivity(value))
+            dispatch(createActivity(value, countryState))
             dispatch(addIdCountries(countryState))
             alert("Agregado"); 
             props.history.goBack()
@@ -96,16 +68,7 @@ export default function CreateActivity(props){
      
     useEffect(() =>{
         dispatch(getAllCountries())
-        // dispatch(orderByWord("asc"))
     },[])
-
-    // useEffect(() =>{
-    //     return () =>{
-    //         const activity = useSelector(state => state.activity)
-    //         console.log(activity)
-    //         // dispatch(addActivity)
-    //     }
-    // },[])
  
     return(
         <div className={style.main}>
@@ -117,11 +80,11 @@ export default function CreateActivity(props){
 
                     <div>
                         <label>Name </label>
-                        <input type="text" name="name" onChange={handleOnChange} className={errors.name && style.danger}></input>
+                        <input type="text" name="name" onChange={handleOnChange} className={`${style.name} ${errors.name && style.danger}`}></input>
                         {errors.name ?<p className={style.error}>{errors.name}</p>: null}
                     </div>
                     <div>
-                        <label>Difficulty </label><br></br>
+                        <label>Difficulty: </label><br/><br/>
                         
                         <input type="radio" id="1" name="difficulty" value="1" defaultChecked onChange={handleOnChange}></input>
                         <label for="1">1</label>
@@ -138,22 +101,14 @@ export default function CreateActivity(props){
 
                     </div>
                     <div>
-                        <label>Duration </label><br/>
-                        <label>Hours</label>
-                        <select name="hours" value={form.duration.hours} onChange={handleHours}>
-                            {hours.map(e=>{
-                                return <option value={e}>{e}</option>
-                            })}
-                        </select>
-                        <label>Minutes</label>
-                        <select name="minutes" value={form.duration.min} onChange={handleMinutes}>
-                            {min.map(e=>{
-                                return <option value={e}>{e}</option>
-                            })}
-                        </select>
+                        <label>Duration: </label><br/><br/>
+                        <span>{form.duration}</span>
+                        <button type="button" onClick={()=> setForm({...form,duration:form.duration+1})}>+</button>
+                        <button type="button" onClick={()=> setForm({...form,duration:form.duration-1})}>-</button>
+                        <label>Hrs</label>
                     </div>
                     <div>
-                        <label>Season </label> <br/>
+                        <label>Season: </label> <br/><br/>
                         <input type="radio" id="summer" value="summer" name="season" defaultChecked onChange={handleOnChange}></input>
                         <label>Summer</label>
                         <input type="radio" id="spring" value="spring" name="season" onChange={handleOnChange}></input>
@@ -165,15 +120,15 @@ export default function CreateActivity(props){
                     </div>
                     <div>
                         <label>Add Country </label>
-                        <select name="country" value={form.country} onChange={handleCountry}>
-                            <option value="">-Select-</option>
+                        <select name="country" className={style.selectCountry} value={form.country} onChange={handleCountry}>
+                            <option value="">--Select--</option>
                             {countries && countries.map(e =>{
                                 return <option key={e.id} value={e.name}>{e.name}</option>
                             })}
                         </select>
                     </div>
                     <div>
-                        <button type="submit"> Save</button><br/><br/>
+                        <button className={style.button} type="submit"> Save</button><br/><br/>
                         {form.country.length >0 && form.country.map( e=>{
                             return <span key={e}>-{e}-</span>
                         })}

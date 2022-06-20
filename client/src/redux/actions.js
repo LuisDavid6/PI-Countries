@@ -1,7 +1,8 @@
 import {GET_ALL_COUNTRIES, GET_COUNTRY,
          ORDER_BY_WORD, FILTER_BY_CONTINENT,
          CREATE_ACTIVITY, ADD_ACTIVITY, ADD_ID_COUNTRIES, 
-         GET_COUNTRIES_BY_NAME, PAGINATION}from "./actionsType"
+         GET_COUNTRIES_BY_NAME, PAGINATION, GET_ALL_ACTIVITIES, 
+         FILTER_BY_ACTIVITY, CLEAR_COUNTRY}from "./actionsType"
 
 const url = "http://localhost:3001"
 
@@ -52,6 +53,13 @@ export function filterByContinent(continent){
     }
 }
 
+export function filterByActivity(activity){
+    return{
+        type: FILTER_BY_ACTIVITY,
+        payload: activity
+    }
+}
+
 export function addIdCountries(countries){
     return{
         type: ADD_ID_COUNTRIES,
@@ -59,7 +67,8 @@ export function addIdCountries(countries){
     }
 }
 
-export function createActivity(activity){
+
+export function createActivity(activity, countries){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -70,26 +79,45 @@ export function createActivity(activity){
         return fetch('http://localhost:3001/activities/', requestOptions)
         .then(data => data.json())
         .then(json => {
+            // addActivity(json.id, countries)
             dispatch({ type: CREATE_ACTIVITY, payload: json})
         })
+        
+        // .then(json=>dispatch({ type: CREATE_ACTIVITY, payload: json}))
+        // // .then(json => console.log(json.payload.id))
+        // .then(json => addActivity(json.payload.id, countries))
+
         .catch(err => console.log(err))
     }
 }
 
-export function addActivity(idActivity, idcountry){
+export function addActivity(idActivity, idCountry){
+    console.log(idActivity,idCountry)
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(idActivity,idcountry)
+        body: JSON.stringify({idActivity,idCountry})
     };
 
     return function (dispatch){
         return fetch('http://localhost:3001/activities/addActivity', requestOptions)
-        .then(data => data.json())
-        .then(json => {
-            dispatch({ type: ADD_ACTIVITY, payload: json})
-        })
-        .catch(err => console.log(err))
+            .then(data => data.json())
+            .then(json => {
+                console.log(json)
+                dispatch({ type: ADD_ACTIVITY, payload: json })
+            })
+            .catch(err => console.log(err))
+    }
+}
+
+export function getAllActivities(){
+    return function(dispatch){
+        return fetch(`${url}/activities/activities`)
+            .then(data => data.json())
+            .then(json =>{
+                dispatch({type: GET_ALL_ACTIVITIES, payload: json })
+            })
+            .catch(error => console.log(error))
     }
 }
 
@@ -97,5 +125,11 @@ export function pagination(numPag){
     return{
         type: PAGINATION,
         payload: numPag
+    }
+}
+
+export function clearCountry(){
+    return{
+        type: CLEAR_COUNTRY
     }
 }
