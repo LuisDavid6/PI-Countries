@@ -6,6 +6,7 @@ import LandingPage from "./components/LandingPage"
 import Home from "./components/Home"
 import Country from "./components/Country"
 import CreateActivity from './components/CreateActivity';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/country/:id" component={Country} />
         <Route path="/createActivity" component={CreateActivity}/>
+        <Route path="*" component={NotFound}/>
       </Switch>
     </div>
   );

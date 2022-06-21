@@ -4,18 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
-    /* background-image: url("https://thumbs.gfycat.com/ImmaculateGlossyAsiaticmouflon-size_restricted.gif"); */
-    /* background-image: url("https://www.maropeng.co.za/uploads/imager/files/19836/16345540736_68701c74f0_o_afef620cc5622511447db0fd14cf5cfe.jpg"); */
-    /* background-image: url("https://i.pinimg.com/originals/11/08/27/110827cb65c3a1eaed04a7d575cf82f0.gif"); */
-    /* background-image: url("https://estaticos.muyinteresante.es/uploads/images/report/5f27ea8c5cafe8872b3b4979/mapas_0.jpg"); */
-    /* background-image: url("https://i.pinimg.com/originals/02/86/a6/0286a6597c2a22e58952a3657eb4c605.jpg"); */
-    /* background-image: url("https://img.freepik.com/foto-gratis/reloj-colgante-mapa-mundo_62754-2407.jpg?w=2000"); */
-    /* background-image: url("https://images4.alphacoders.com/175/175466.jpg"); */
-    /* background-image: url("https://fondosmil.com/fondo/2737.jpg"); */
-    
-
-
+    position: relative;
 }
 .body{
     height: 100vh; 
@@ -38,16 +27,31 @@
 } */
 
 .title{
-    color: black;
+    color: rgb(119, 84, 43);
     /* background-color: blueviolet; */
     display: flex;
     justify-content: center;
     width: 100%;
+    position: absolute;
+    bottom: 200px;
+    right: -140px;
 }
 
-.button{
-    font-size: x-large;
-    width: 100%;
-    height: max-content;
-    /* background-color: red; */
+.enter{
+    font-size: 50px;
+    position: absolute;
+    right: 240px;
+    bottom: 50px;
+    font-family: serif;
+
+    color: aliceblue;
+    /* font-size: 15px; */
+    width: fit-content;
+    font-weight: 500;
+    padding: 5px 10px;
+    background: rgba(134, 101, 52, 0.911);
+    border: 2px solid;
+    border-color: rgba(175, 149, 111, 0.911);
+    border-radius: 30px;
+    cursor: pointer;
 }

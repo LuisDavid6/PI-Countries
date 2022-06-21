@@ -1,8 +1,8 @@
 import style from "./Styles/CreateActivity.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import { useState, useEffect } from "react"
-import {getAllCountries, createActivity, addIdCountries, addActivity } from "../redux/actions"
-import { validateName } from "../Validations/index"
+import {getAllCountries, createActivity, addIdCountries } from "../redux/actions"
+import { validate } from "../Validations/index"
 
 export default function CreateActivity(props){
 
@@ -23,10 +23,7 @@ export default function CreateActivity(props){
     })
 
     const [countryState, setCountryState] = useState([])
-    const countries = useSelector(state => state.countriesFilter)
-
-    const activity = useSelector(state => state.activity)
-    const idCountries = useSelector(state => state.idCountries)
+    const countries = useSelector(state => state.countries)
 
     const dispatch = useDispatch()
     
@@ -34,17 +31,33 @@ export default function CreateActivity(props){
         setForm({...form,
             [e.target.name] : e.target.value})
         
-        let name = validateName({[e.target.name] : e.target.value})
+        let name = validate({[e.target.name] : e.target.value})
         // console.log(name)
         setErrors({...errors, [e.target.name]: name})
+        console.log(errors)
 
     }
 
     const handleCountry = (e) =>{
         let value = e.target.value
-        let id = countries.find(e => e.name===value).id
-        setCountryState([...countryState, id])
-        setForm({...form, country:[...form.country, e.target.value]})
+        if(value){
+            let id = countries.find(e => e.name===value).id
+            if(countryState.includes(id)) alert("el country ya esta agregado")
+            else{
+                setErrors({...errors, countries:""})
+                setCountryState([...countryState, id])
+                setForm({...form, country:[...form.country, e.target.value]})
+            }
+        }
+    }
+
+    const handleDuration = (value) =>{
+        let val = validate({duration:form.duration+value})
+        if(val) setErrors({...errors, duration:val})
+        else {
+            setErrors({...errors, duration:""})
+            setForm({...form,duration:form.duration+value})
+        }
     }
 
 
@@ -56,13 +69,19 @@ export default function CreateActivity(props){
             duration: ""+form.duration,
             season: form.season 
         }
-        //validar datos
-        if(!errors.name && !errors.difficulty && !errors.duration && 
-        !errors.season && !errors.countries){
-            dispatch(createActivity(value, countryState))
-            dispatch(addIdCountries(countryState))
-            alert("Agregado"); 
-            props.history.goBack()
+
+        if(!errors.name && !errors.difficulty && 
+        !errors.season){
+            if(value.name.length === 0) setErrors({...errors, name:"El nombre no puede estar vacio"})
+            else if(form.duration=== 0) setErrors({...errors, duration:"La duración debe ser mayor a 0"})
+            else if(form.country.length === 0) setErrors({...errors, countries:"Debes seleccionar al menos un pais"})
+            else{
+                dispatch(createActivity(value, countryState))
+                dispatch(addIdCountries(countryState))
+                alert("Agregado"); 
+                props.history.goBack()
+            }
+
         }
     }
      
@@ -73,6 +92,7 @@ export default function CreateActivity(props){
     return(
         <div className={style.main}>
             <h1>NEW ACTIVITY</h1>
+            <button className={style.buttonBack} onClick={()=>props.history.goBack()}>Back</button>
         <div>
             <fieldset className={style.fieldset}>
                 <legend className={style.legend}>New Activity</legend>
@@ -101,11 +121,12 @@ export default function CreateActivity(props){
 
                     </div>
                     <div>
-                        <label>Duration: </label><br/><br/>
-                        <span>{form.duration}</span>
-                        <button type="button" onClick={()=> setForm({...form,duration:form.duration+1})}>+</button>
-                        <button type="button" onClick={()=> setForm({...form,duration:form.duration-1})}>-</button>
-                        <label>Hrs</label>
+                        <label>Duration: </label><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" className={style.duration} onClick={()=> handleDuration(-1)}>-</button>&nbsp;
+                        <span><b>{form.duration}</b></span>&nbsp;
+                        <button type="button" className={style.duration} onClick={()=> handleDuration(1)}>+</button>
+                        <label> Hrs</label>
+                        {errors.duration ?<p className={style.error}>{errors.duration}</p>: null}
                     </div>
                     <div>
                         <label>Season: </label> <br/><br/>
@@ -126,6 +147,7 @@ export default function CreateActivity(props){
                                 return <option key={e.id} value={e.name}>{e.name}</option>
                             })}
                         </select>
+                        {errors.countries ?<p className={style.error}>{errors.countries}</p>: null}
                     </div>
                     <div>
                         <button className={style.button} type="submit"> Save</button><br/><br/>

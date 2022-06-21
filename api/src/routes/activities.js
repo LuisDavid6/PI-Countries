@@ -3,6 +3,7 @@ const {Activity} = require("../db")
 const router = Router()
 
 router.post("/", async(req, res) =>{
+
     const {name, difficulty, duration, season} = req.body
     const activity = await Activity.create({name, difficulty, duration, season})
     res.json(activity)
@@ -10,8 +11,8 @@ router.post("/", async(req, res) =>{
 })
 
 router.put("/addActivity", async (req, res) =>{
-    const {idActivity, idCountry} = req.body
-    
+    const {idActivity, idCountry} = req.body    
+    console.log(idActivity,idCountry)
     const activity = await Activity.findByPk(idActivity)
 
     res.json(await activity.addCountries(idCountry))

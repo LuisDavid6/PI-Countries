@@ -22,7 +22,7 @@ export default function Home(){
 
     useEffect(()=>{
         dispatch(getAllCountries())
-        // dispatch(clearCountry())
+        dispatch(clearCountry())
     },[])
     
     useEffect(()=>{
@@ -51,7 +51,7 @@ export default function Home(){
             </div>
             <div className={style.contents}>
                 {/* {console.log(countriesFilter)} */}
-                {typeof countriesFilter === "string" ? <h5>Country not found</h5> : 
+                {typeof countriesFilter === "string" ? <h5 className={style.notFound}>Country not found</h5> : 
                  countriesFilter && countriesFilter.slice(0, pag).map(e =>{
                     return (
                         <CountryCard className={style.card} key={e.id} data={e}></CountryCard>

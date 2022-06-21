@@ -100,17 +100,15 @@ export default function Reducer(state=inicialState, action){
             let array = []
             state.countries.map(e=>{
                 if(e.activities.length>0) e.activities.map(f=> {
-                    if(f.name === action.payload)array.push(e)
+                    if(f.name === action.payload) array.push(e)
                 })
             })
-            console.log(array)
             return{
                 ...state,
                 countriesFilter: array,
                 filter: !state.filter,
-                countries2:array
-                // countries2: state.countries.filter(e => e.activities && e.activities.map(f => f.name === action.payload) )   
-
+                countries2:array,
+                idCountries:[]
             }
             
         case GET_ALL_ACTIVITIES:
@@ -129,7 +127,7 @@ export default function Reducer(state=inicialState, action){
             return{
                 ...state,
                 activity:{},
-                filter: !state.filter,
+                // filter: !state.filter,
                 isAddActivity: !state.isAddActivity
                 
                 // idCountries: action.payload,

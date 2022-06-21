@@ -1,7 +1,7 @@
 import style from "./Styles/Filters.module.css"
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector} from "react-redux"
-import { orderByWord, filterByContinent, filterByActivity, getAllActivities, addActivity } from "../redux/actions"
+import { orderByWord, filterByContinent, filterByActivity, getAllActivities } from "../redux/actions"
 
 export default function Filters(){
 
@@ -41,11 +41,11 @@ export default function Filters(){
             <fieldset className={style.fieldset}>
                 <legend className={style.legend}>ORDER BY:</legend>
                 <select name="order" className={style.select} value={filter.orderBy} onChange={e => handleOnChange(e)}>
-                    <option value="none" selected>Default</option>x
-                    <option value="asc" >Order A - Z</option>
-                    <option value="desc">Order Z - A</option>
-                    <option value="min">Population: Min-Max</option>
-                    <option value="max">Pop Max-Min</option>
+                    <option value="" disabled selected>Default</option>x
+                    <option value="asc" >By name A-Z</option>
+                    <option value="desc">By name Z-A</option>
+                    <option value="min">By Population (-/+)</option>
+                    <option value="max">By Population (+/-)</option>
                 </select>
             </fieldset>
             <fieldset className={style.fieldset}>
