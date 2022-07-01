@@ -47,7 +47,7 @@ export default function Country(props){
                         {country.activities && country.activities.length>0 ? country.activities.map(e=>{
                             return <Activity data={e} key={e.name}/>
                         }) : <h3>Not Activities Found</h3> }
-                        <Link to="/createActivity"> <button className={style.add}>+</button> </Link>
+                        {/* <Link to="/createActivity"> <button className={style.add}>+</button> </Link> */}
                     </div>
                 </fieldset>
             </div>

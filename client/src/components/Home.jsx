@@ -50,7 +50,6 @@ export default function Home(){
                 <Pagination></Pagination>
             </div>
             <div className={style.contents}>
-                {/* {console.log(countriesFilter)} */}
                 {typeof countriesFilter === "string" ? <h5 className={style.notFound}>Country not found</h5> : 
                  countriesFilter && countriesFilter.slice(0, pag).map(e =>{
                     return (

@@ -18,6 +18,27 @@ router.put("/addActivity", async (req, res) =>{
     res.json(await activity.addCountries(idCountry))
 })
 
+// SUSTENTACION PI
+// router.put("/changeActivity", async (req, res) =>{
+//     const {idActivity, duration} = req.body
+
+
+    
+//     const update = await Activity.update({
+//         duration: duration,
+//     }, {
+//         where: {
+//             id: idActivity,
+//         }
+//     });
+    
+//     let activity = await Activity.findByPk(1)
+//     console.log(activity)
+//     res.json(update)
+// })
+
+
+
 router.get("/activities", async (req, res) =>{
     try {
         const list = await Activity.findAll({

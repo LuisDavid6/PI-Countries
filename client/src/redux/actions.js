@@ -4,7 +4,9 @@ import {GET_ALL_COUNTRIES, GET_COUNTRY,
          GET_COUNTRIES_BY_NAME, PAGINATION, GET_ALL_ACTIVITIES, 
          FILTER_BY_ACTIVITY, CLEAR_COUNTRY}from "./actionsType"
 
-const url = "http://localhost:3001"
+// const url = "http://localhost:3001"
+const url = process.env.REACT_APP_URL
+
 
 export function getAllCountries(){    
     return function(dispatch){
@@ -76,17 +78,11 @@ export function createActivity(activity, countries){
     };
 
     return function (dispatch){
-        return fetch('http://localhost:3001/activities/', requestOptions)
+        return fetch(url+'/activities/', requestOptions)
         .then(data => data.json())
         .then(json => {
-            // addActivity(json.id, countries)
             dispatch({ type: CREATE_ACTIVITY, payload: json})
         })
-        
-        // .then(json=>dispatch({ type: CREATE_ACTIVITY, payload: json}))
-        // // .then(json => console.log(json.payload.id))
-        // .then(json => addActivity(json.payload.id, countries))
-
         .catch(err => console.log(err))
     }
 }
@@ -100,7 +96,7 @@ export function addActivity(idActivity, idCountry){
     };
 
     return function (dispatch){
-        return fetch('http://localhost:3001/activities/addActivity', requestOptions)
+        return fetch(url+'/activities/addActivity', requestOptions)
             .then(data => data.json())
             .then(json => {
                 console.log(json)

@@ -32,9 +32,7 @@ export default function CreateActivity(props){
             [e.target.name] : e.target.value})
         
         let name = validate({[e.target.name] : e.target.value})
-        // console.log(name)
         setErrors({...errors, [e.target.name]: name})
-        console.log(errors)
 
     }
 
@@ -96,7 +94,7 @@ export default function CreateActivity(props){
         <div>
             <fieldset className={style.fieldset}>
                 <legend className={style.legend}>New Activity</legend>
-                <form className={style.form} onSubmit={handleOnSubmit}>
+                <form className={style.form} onSubmit={handleOnSubmit} autoComplete="off">
 
                     <div>
                         <label>Name </label>
@@ -152,7 +150,7 @@ export default function CreateActivity(props){
                     <div>
                         <button className={style.button} type="submit"> Save</button><br/><br/>
                         {form.country.length >0 && form.country.map( e=>{
-                            return <span key={e}>-{e}-</span>
+                            return <h5 key={e}>{e}</h5>
                         })}
                     </div>
                 </form>

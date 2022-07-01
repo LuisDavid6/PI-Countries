@@ -21,9 +21,6 @@ export default function NavBar(){
         else dispatch(getAllCountries())
     },[search])
 
-    // useEffect(()=>{
-    //     setSearch("")
-    // },[filter])
 
     const handleOnSubmit = (e) =>{
         e.preventDefault()

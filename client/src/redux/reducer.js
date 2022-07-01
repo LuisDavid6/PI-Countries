@@ -1,4 +1,3 @@
-import { pagination } from "./actions"
 import {GET_ALL_COUNTRIES,
     GET_COUNTRY, 
     ORDER_BY_WORD, 
@@ -43,12 +42,13 @@ export default function Reducer(state=inicialState, action){
                 filter: !state.filter
             }
         case GET_COUNTRIES_BY_NAME:
-            console.log(action.payload)
             return{
                 ...state,
                 countriesFilter: action.payload.length>0 ? action.payload : "sin info",
                 countries2: action.payload,
                 countries3: action.payload,
+                // filter: !state.filter
+
             }
         case ORDER_BY_WORD:
             let order = []
@@ -127,10 +127,7 @@ export default function Reducer(state=inicialState, action){
             return{
                 ...state,
                 activity:{},
-                // filter: !state.filter,
                 isAddActivity: !state.isAddActivity
-                
-                // idCountries: action.payload,
             }
         case ADD_ID_COUNTRIES:
             return{
@@ -147,7 +144,6 @@ export default function Reducer(state=inicialState, action){
             else {
                 countriesviews = state.countries2.slice((num-1)*(10), (((num-1)*(10))+(10)))
             }
-            // console.log(countriesviews)
             return{
                 ...state,
                 countriesFilter: countriesviews,

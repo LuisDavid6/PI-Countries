@@ -10,7 +10,6 @@ router.get("/", async (req, res, next) =>{
     if(name){
         try {
             let {name} = req.query
-            // name = name[0].toUpperCase() + name.slice(1).toLowerCase()
             const country = await Country.findAll({
                 where: {
                     name:{[Op.iLike]: `%${name}%`}
