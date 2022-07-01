@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Sequelize, Op} = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const sequelize = require('sequelize');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
@@ -12,8 +11,8 @@ const {
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 // });
 
-const sequelize = process.env.NODE_ENV === "production"
-  ? new sequelize({
+let sequelize = process.env.NODE_ENV === "production"
+  ? new Sequelize({
     database: DB_NAME,
     dialect: "postgres",
     host: DB_HOST,
