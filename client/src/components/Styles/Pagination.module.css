@@ -1,0 +1,25 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill , 50px);
+    gap: 12px;
+    height: auto;
+    justify-content: center;
+    margin: 30px 50px;
+       
+}
+
+.button{
+    background-color: rgba(175, 149, 111, 0.911);
+    border-radius: 5px;
+    padding: 10%;
+    border-color: rgba(175, 149, 111, 0.911);
+    font-weight: 700;
+}       
+
+.button :active{
+    /* box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+    transition: all 0.2s ease; */
+    background-color: aqua;
+    cursor: pointer;
+    transform: translateY(-10px);
+}

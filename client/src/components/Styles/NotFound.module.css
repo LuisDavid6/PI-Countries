@@ -1,0 +1,15 @@
+.container{
+    /* width: 100%; */
+    height: auto;
+    background-color: aqua;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.img{
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+    top: -340px;
+}

@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 1%;
+}
+
+
+.input{
+    background-color: transparent;
+    border: solid 3px;
+    border-radius: 55px;
+    height: 25px;
+    font-weight: bolder;
+    font-size: 15px;
+    color: black;
+    margin-right: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.button{
+    color: black;
+    font-size: 15px;
+    width: fit-content;
+    font-weight: 710;
+    padding: 5px 10px;
+    /* background: rgba(134, 101, 52, 0.911); */
+    background: rgba(175, 149, 111, 0.911);
+    border: 2px solid;
+    border-color: rgba(175, 149, 111, 0.911);
+    border-radius: 5px;
+    cursor: pointer;
+}

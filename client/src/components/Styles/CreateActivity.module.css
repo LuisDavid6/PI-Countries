@@ -1,0 +1,112 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+
+}
+
+.buttonBack{
+    color: aliceblue;
+    font-size: 15px;
+    width: fit-content;
+    font-weight: 500;
+    padding: 5px 10px;
+    background: rgba(134, 101, 52, 0.911);
+    border: 2px solid;
+    border-color: rgba(175, 149, 111, 0.911);
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 24%;
+    top: 8%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.fieldset{
+    /* display: flex; */
+    /* justify-content: center; */
+    width: 60%;
+    padding: 70px 100px;
+    border:  solid 6px rgba(139, 119, 89, 0.911);
+    /* border-color: rgba(175, 149, 111, 0.911); */
+}
+
+.legend{
+    text-align: left;
+    font-size: larger;
+    font-weight: 700;
+    color: rgba(51, 31, 2, 0.911);
+}
+
+.name{
+    background-color: transparent;
+    border: solid 3px rgba(105, 78, 36, 0.911);;
+    border-radius: 10px;
+    height: 25px;
+    font-weight: bolder;
+    font-size: 15px;
+    color: black;
+    margin-right: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.button{
+    color: aliceblue;
+    font-size: 15px;
+    width: fit-content;
+    font-weight: 500;
+    padding: 5px 10px;
+    background: rgba(134, 101, 52, 0.911);
+    border: 2px solid;
+    border-color: rgba(175, 149, 111, 0.911);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.duration{
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.selectCountry{
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 40px;
+    border: solid rgba(105, 78, 36, 0.911);
+    border-radius: 7px;
+    outline: none;
+    text-align: left;
+    font-size: large;
+    background-color: transparent;
+}
+
+option{
+    background-color: rgba(175, 149, 111, 0.911);
+
+}
+
+.error{
+    margin: 0;
+    padding: 0%;
+    color: red;
+    font-size: small;
+}
+
+.danger{
+    border-color: red;
+}
+
+label{
+    font-size: large;
+    font-weight: 600
+}
