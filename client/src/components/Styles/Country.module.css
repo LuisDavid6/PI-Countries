@@ -9,9 +9,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
     gap: 40px;
-    /* border: 5px solid black; */
     padding: 20px;
     width: fit-content;
     margin-top: 10px;
@@ -36,9 +34,7 @@
 .fieldset{
     width: 100%;
     height: fit-content;
-    /* padding: 70px 100px; */
     border:  solid 6px rgba(139, 119, 89, 0.911);
-    /* border:  solid 6px rgba(175, 149, 111, 0.911); */
     border-radius: 5px;
     background-color: rgba(175, 149, 111, 0.911);
 }
@@ -56,9 +52,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 8px;
-    padding: 0px 30px;
-    /* text-align: left; */
-    
+    padding: 0px 30px;   
 }
 
 .left{
@@ -99,5 +93,6 @@
 @media (max-width: 645px) {
     .container{
         flex-direction: column;
+        align-items: center;
     }
 } 

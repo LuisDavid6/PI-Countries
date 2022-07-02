@@ -52,14 +52,17 @@ export default function Home(){
             </div>
             <div className={style.contents}>
                 {typeof countriesFilter === "string" ? <h5 className={style.notFound}>Country not found</h5> : 
-                 countriesFilter && countriesFilter.slice(0, pag).map(e =>{
+                 countriesFilter && countriesFilter.length > 0 ? countriesFilter.slice(0, pag).map(e =>{
                     return (
                         <CountryCard className={style.card} key={e.id} data={e}></CountryCard>
                         )
-                    })}
+                    }) :
+                        <div className={style.spinnerContainer}>
+                            <div className={style.spinner}></div>
+                        </div>}
             </div>
-            <div>
-                <Footer></Footer>
+            <div className={style.footer}> {countriesFilter.length > 0 ? 
+                <Footer></Footer> : null}
             </div>
         </div>
     )

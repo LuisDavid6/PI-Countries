@@ -4,9 +4,12 @@
     gap: 60px;
     margin: 40px 90px;
     justify-content: center;
+    position: relative;
 }
-.container{
-    
+
+.spinnerContainer{
+    position: absolute;
+    left: 50%;
 }
 
 .notFound{
@@ -14,4 +17,25 @@
     font-size: xx-large;
 }
  
+.spinner {
+    border: 15px solid rgb(172, 146, 99);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border-left-color: rgb(94, 76, 46);
+    animation: spin 1s ease infinite;
+}
+    
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+      
+      
+
   
