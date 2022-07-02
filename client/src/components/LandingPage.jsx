@@ -4,7 +4,7 @@ import style from "./Styles/LandingPage.module.css"
 export default function Index(){
     return(
         <div className={style.body}>
-                <Link to="/home"><button className={style.enter}>INGRESAR</button></Link>
+                <Link to="/home"><button className={style.enter}>ENTER</button></Link>
         </div>
     )
 }
