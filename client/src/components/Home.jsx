@@ -6,6 +6,7 @@ import { addActivity, clearCountry, getAllCountries, pagination } from "../redux
 import CountryCard from "./CountryCard"
 import Filters from "./Filters"
 import Pagination from "./Pagination"
+import Footer from "./Footer"
 
 export default function Home(){
 
@@ -56,6 +57,9 @@ export default function Home(){
                         <CountryCard className={style.card} key={e.id} data={e}></CountryCard>
                         )
                     })}
+            </div>
+            <div>
+                <Footer></Footer>
             </div>
         </div>
     )
