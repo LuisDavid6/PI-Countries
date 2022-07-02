@@ -97,7 +97,7 @@ export default function CreateActivity(props){
                 <form className={style.form} onSubmit={handleOnSubmit} autoComplete="off">
 
                     <div>
-                        <label>Name </label>
+                        <label>Name: </label><br/><br/>
                         <input type="text" name="name" onChange={handleOnChange} className={`${style.name} ${errors.name && style.danger}`}></input>
                         {errors.name ?<p className={style.error}>{errors.name}</p>: null}
                     </div>

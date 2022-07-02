@@ -1,10 +1,9 @@
 .main{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     position: relative;
-
+    margin-bottom: 30px;
 }
 
 .buttonBack{
@@ -20,7 +19,7 @@
     cursor: pointer;
     position: absolute;
     right: 24%;
-    top: 8%;
+    top: 7%;
 }
 
 .form{
@@ -30,12 +29,9 @@
 }
 
 .fieldset{
-    /* display: flex; */
-    /* justify-content: center; */
     width: 60%;
     padding: 70px 100px;
     border:  solid 6px rgba(139, 119, 89, 0.911);
-    /* border-color: rgba(175, 149, 111, 0.911); */
 }
 
 .legend{
@@ -92,7 +88,6 @@
 
 option{
     background-color: rgba(175, 149, 111, 0.911);
-
 }
 
 .error{
@@ -109,4 +104,13 @@ option{
 label{
     font-size: large;
     font-weight: 600
+}
+
+@media (max-width: 550px) {
+    .fieldset{
+        padding: 70px 50px;
+    }
+    .buttonBack{
+        right: 15%;
+    }
 }

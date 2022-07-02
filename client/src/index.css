@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://img.freepik.com/foto-gratis/viejo-papel-vintage-envejecido-fondo-o-textura_34266-532.jpg?w=2000");
-
+  background: url("https://img.freepik.com/foto-gratis/viejo-papel-vintage-envejecido-fondo-o-textura_34266-532.jpg?w=2000") ;
+  
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
