@@ -12,18 +12,6 @@ const {
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 // });
 
-const sequelize = new Sequelize(URL,{
-  dialect:"postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-    keepAlive: true,
-  },
-  ssl: true,
-});
-
 // let sequelize = process.env.NODE_ENV === "production"
 //   ? new Sequelize({
 //     database: DB_NAME,
@@ -53,33 +41,39 @@ const sequelize = new Sequelize(URL,{
 
 
 
-// let sequelize = process.env.NODE_ENV === "production"
-//   ? new Sequelize({
-//     database: DB_NAME,
-//     dialect: "postgres",
-//     host: DB_HOST,
-//     port: 5432,
-//     username: DB_USER,
-//     password: DB_PASSWORD,
-//     pool: {
-//       max: 3,
-//       min: 1,
-//       idle: 10000,
-//     },
-//     dialectOptions: {
-//       ssl: {
-//         require: true,
-//         rejectUnauthorized: false,
-//       },
-//       keepAlive: true,
-//     },
-//     ssl: true,
-//   })
-// : new Sequelize(URL, {
-//   // logging: false, // set to console.log to see the raw SQL queries
-//   // native: false, // lets Sequelize know we can use pg-native for ~30% more speed,
-//   dialect:"postgres",
-// });
+let sequelize = process.env.NODE_ENV === "production"
+  ? new Sequelize({
+    database: DB_NAME,
+    dialect: "postgres",
+    host: DB_HOST,
+    port: 5432,
+    username: DB_USER,
+    password: DB_PASSWORD,
+    pool: {
+      max: 3,
+      min: 1,
+      idle: 10000,
+    },
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+      keepAlive: true,
+    },
+    ssl: true,
+  })
+  : new Sequelize(URL,{
+    dialect:"postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+      keepAlive: true,
+    },
+    ssl: true,
+  });
 
 
   sequelize.authenticate().then( () => console.log('Connection has been established successfully.'))
