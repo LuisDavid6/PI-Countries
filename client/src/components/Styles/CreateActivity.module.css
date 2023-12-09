@@ -1,116 +1,138 @@
-.main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin-bottom: 30px;
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.buttonBack{
-    color: aliceblue;
-    font-size: 15px;
-    width: fit-content;
-    font-weight: 500;
-    padding: 5px 10px;
-    background: rgba(134, 101, 52, 0.911);
-    border: 2px solid;
-    border-color: rgba(175, 149, 111, 0.911);
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 24%;
-    top: 7%;
+.buttonBack {
+  color: aliceblue;
+  font-size: 15px;
+  width: fit-content;
+  font-weight: 500;
+  padding: 5px 10px;
+  background: rgba(134, 101, 52, 0.911);
+  border: 2px solid;
+  border-color: rgba(175, 149, 111, 0.911);
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 3px;
+  top: 1px;
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 10px;
 }
 
-.fieldset{
-    width: 60%;
-    padding: 70px 100px;
-    border:  solid 6px rgba(139, 119, 89, 0.911);
+.fieldset {
+  width: 60%;
+  padding: 70px 100px;
+  border: solid 6px rgba(139, 119, 89, 0.911);
+  position: relative;
+
+  @media (max-width: 550px) {
+    padding: 70px 50px;
+  }
 }
 
-.legend{
-    text-align: left;
-    font-size: larger;
-    font-weight: 700;
-    color: rgba(51, 31, 2, 0.911);
+.legend {
+  text-align: left;
+  font-size: larger;
+  font-weight: 700;
+  color: rgba(51, 31, 2, 0.911);
 }
 
-.name{
-    background-color: transparent;
-    border: solid 3px rgba(105, 78, 36, 0.911);;
-    border-radius: 10px;
-    height: 25px;
-    font-weight: bolder;
-    font-size: 15px;
-    color: black;
-    margin-right: 12px;
-    padding-left: 15px;
-    padding-right: 15px;
+.name {
+  background-color: transparent;
+  border: solid 3px rgba(105, 78, 36, 0.911);
+  border-radius: 10px;
+  height: 25px;
+  font-weight: bolder;
+  font-size: 15px;
+  color: black;
+  margin-right: 12px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.button{
-    color: aliceblue;
-    font-size: 15px;
-    width: fit-content;
-    font-weight: 500;
-    padding: 5px 10px;
-    background: rgba(134, 101, 52, 0.911);
-    border: 2px solid;
-    border-color: rgba(175, 149, 111, 0.911);
-    border-radius: 5px;
-    cursor: pointer;
+.button {
+  color: aliceblue;
+  font-size: 18px;
+  width: 200px;
+  font-weight: 500;
+  padding: 10px;
+  background-color: rgba(105, 78, 36, 0.911);
+  border: 2px solid;
+  border-color: rgba(175, 149, 111, 0.911);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.duration{
-    background-color: transparent;
-    border-radius: 50%;
-    cursor: pointer;
+.duration {
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.selectCountry{
-    margin: 0%;
-    padding: 0%;
-    width: 100%;
-    height: 40px;
-    border: solid rgba(105, 78, 36, 0.911);
-    border-radius: 7px;
-    outline: none;
-    text-align: left;
-    font-size: large;
-    background-color: transparent;
+.selectCountry {
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 40px;
+  border: solid rgba(105, 78, 36, 0.911);
+  border-radius: 7px;
+  outline: none;
+  text-align: left;
+  font-size: large;
+  background-color: transparent;
 }
 
-option{
-    background-color: rgba(175, 149, 111, 0.911);
+.countriesList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -20px;
+  gap: 20px;
 }
 
-.error{
-    margin: 0;
-    padding: 0%;
-    color: red;
-    font-size: small;
+.country {
+  background-color: rgba(134, 101, 52, 0.911);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  color: white;
+  border-radius: 10px;
+  padding: 0px 10px;
 }
 
-.danger{
-    border-color: red;
+.countryRemove {
+  background-color: red;
+  padding: 0px 7px 4px 7px;
+  border-radius: 20%;
+  cursor: pointer;
+  text-align: center;
 }
 
-label{
-    font-size: large;
-    font-weight: 600
+option {
+  background-color: rgba(175, 149, 111, 0.911);
 }
 
-@media (max-width: 550px) {
-    .fieldset{
-        padding: 70px 50px;
-    }
-    .buttonBack{
-        right: 15%;
-    }
+.error {
+  margin: 0;
+  padding: 0%;
+  color: red;
+  font-size: small;
+}
+
+.danger {
+  border-color: red;
+}
+
+label {
+  font-size: large;
+  font-weight: 600;
 }
