@@ -1,34 +1,56 @@
-.container{
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    padding-top: 1%;
+.container {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 20px;
+  padding-top: 1%;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-
-.input{
-    background-color: transparent;
-    border: solid 3px;
-    border-radius: 55px;
-    height: 25px;
-    font-weight: bolder;
-    font-size: 15px;
-    color: black;
-    margin-right: 12px;
-    padding-left: 15px;
-    padding-right: 15px;
+.section {
+  position: relative;
+  width: fit-content;
 }
 
-.button{
-    color: black;
-    font-size: 15px;
-    width: fit-content;
-    font-weight: 710;
-    padding: 5px 10px;
-    /* background: rgba(134, 101, 52, 0.911); */
-    background: rgba(175, 149, 111, 0.911);
-    border: 2px solid;
-    border-color: rgba(175, 149, 111, 0.911);
-    border-radius: 5px;
-    cursor: pointer;
+.input {
+  background-color: transparent;
+  border: solid 3px rgba(105, 78, 36, 0.911);
+  border-radius: 5px;
+  height: 32px;
+  font-weight: bolder;
+  font-size: 15px;
+  color: black;
+  padding-left: 15px;
+  padding-right: 45px;
+}
+
+.input::placeholder {
+  color: black;
+}
+
+.icono {
+  font-size: xx-large;
+  background-color: rgba(105, 78, 36, 0.911);
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.button {
+  color: aliceblue;
+  font-size: 15px;
+  width: fit-content;
+  font-weight: 500;
+  padding: 10px;
+  background-color: rgba(105, 78, 36, 0.911);
+  border: 2px solid;
+  border-color: rgba(175, 149, 111, 0.911);
+  border-radius: 5px;
+  cursor: pointer;
 }

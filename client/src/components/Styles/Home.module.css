@@ -1,41 +1,42 @@
-.contents{
-    display: grid;
-    grid-template-columns: repeat(auto-fill , 200px);
-    gap: 60px;
-    margin: 40px 90px;
-    justify-content: center;
-    position: relative;
+.contents {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 60px;
+  margin: 80px 90px;
+  justify-content: center;
+  position: relative;
 }
 
-.spinnerContainer{
-    position: absolute;
-    left: 43%;
+.header {
+  background-color: rgba(175, 149, 111, 0.911);
+  padding: 10px 0px 30px 0px;
 }
 
-.notFound{
-    width: 1000px;
-    font-size: xx-large;
+.spinnerContainer {
+  position: absolute;
+  left: 43%;
 }
- 
+
+.notFound {
+  width: 1000px;
+  font-size: xx-large;
+}
+
 .spinner {
-    border: 15px solid rgb(172, 146, 99);
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border-left-color: rgb(94, 76, 46);
-    animation: spin 1s ease infinite;
+  border: 15px solid rgb(172, 146, 99);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border-left-color: rgb(94, 76, 46);
+  animation: spin 1s ease infinite;
 }
-    
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    
-    100% {
-        transform: rotate(360deg);
-    }
-}
-      
-      
 
-  
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

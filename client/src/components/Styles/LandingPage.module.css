@@ -1,40 +1,38 @@
-
-.body{
-    height: 100vh; 
-    width: 100vw;
-    background-image: url("https://estaticos.muyinteresante.es/uploads/images/report/5f27ea8c5cafe8872b3b4979/mapas_0.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../assets/landing-page.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.enter{
-    font-size: 50px;
-    right: 240px;
-    bottom: 50px;
-    font-family: serif;
-    color: aliceblue;
-    width: fit-content;
-    font-weight: 500;
-    padding: 5px 30px;
-    margin-left: 50px;
-    background: rgba(134, 101, 52, 0.911);
-    border: 2px solid;
-    border-color: rgba(175, 149, 111, 0.911);
-    border-radius: 30px;
-    cursor: pointer;
-}
+.enter {
+  font-size: 50px;
+  right: 240px;
+  bottom: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: aliceblue;
+  width: fit-content;
+  font-weight: 700;
+  padding: 20px 30px;
+  margin-left: 50px;
+  background: rgba(134, 101, 52, 0.911);
+  border: 2px solid;
+  border-color: rgba(175, 149, 111, 0.911);
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0px 8px 8px 0px rgba(48, 31, 7, 0.911);
 
-@media (max-width: 480px) {
-    .enter{
-        font-size: 30px;
-        right: 140px;
-        bottom: 30px;
-        margin-left: 0;
-    }
+  @media (max-width: 480px) {
+    font-size: 30px;
+    right: 140px;
+    bottom: 30px;
+    margin-left: 0;
+  }
 }

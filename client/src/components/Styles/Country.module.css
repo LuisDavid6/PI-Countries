@@ -80,6 +80,33 @@
   justify-items: center;
 }
 
+.spinnerContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 15px solid rgb(172, 146, 99);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border-left-color: rgb(94, 76, 46);
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 645px) {
   .container {
     flex-direction: column;
