@@ -1,16 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("https://img.freepik.com/foto-gratis/viejo-papel-vintage-envejecido-fondo-o-textura_34266-532.jpg?w=2000") ;
+  background: url('https://img.freepik.com/foto-gratis/viejo-papel-vintage-envejecido-fondo-o-textura_34266-532.jpg?w=2000');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

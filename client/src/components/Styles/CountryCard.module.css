@@ -1,43 +1,42 @@
-.container :hover{
-    transform: translateY(-10px);
+.container :hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 8px 5px 0px rgba(48, 31, 7, 0.911);
 }
 
-
-.card{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 3px solid black;
-    /* border: 3px solid rgba(175, 149, 111, 0.911);;; */
-    border-radius: 20px;
-    margin-left: 20px;
-    background-color: rgba(175, 149, 111, 0.911);
-    color: black;
-    font-weight: 600;  
-    width: 200px;
-    height: 260px;  
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 20px;
+  margin-left: 20px;
+  background-color: rgba(175, 149, 111, 0.911);
+  color: black;
+  font-weight: 600;
+  width: 200px;
+  height: 260px;
 }
 
-img{
-    width: 150px;
-    height: 100px;
-    align-self: center;
-    pointer-events: none;
-    margin-bottom: 10px;
+img {
+  width: 150px;
+  height: 100px;
+  align-self: center;
+  pointer-events: none;
+  margin-bottom: 10px;
 }
 
-.span{
-    text-align: center;
-    pointer-events: none;
-    margin-bottom: 10px;
+.span {
+  text-align: center;
+  pointer-events: none;
+  margin-bottom: 10px;
 }
 
-.name{
-    font-size: large;
-    margin-top: -8px;
-    margin-bottom: 20px;
+.name {
+  font-size: large;
+  margin-top: -8px;
+  margin-bottom: 20px;
 }
 
-.link{
-    text-decoration: none;
+.link {
+  text-decoration: none;
 }
